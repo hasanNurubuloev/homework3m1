@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button zero;
     Button equal;
     Button plus;
+    Button percent;
     Button clear;
 
     double num1;
@@ -53,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
         zero = findViewById(R.id.zero);
         equal = findViewById(R.id.equal);
         minus = findViewById(R.id.minus);
+        percent = findViewById(R.id.percent);
         clear = findViewById(R.id.clear);
+
 
 
         View.OnClickListener ocl = new View.OnClickListener() {
@@ -119,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                             result.setText(Double.toString(num1 * num2));
                         }else if (operation== "/"){
                             result.setText((Double.toString(num1/num2)));
+                        }else if (operation == "%") {
+                            result.setText(Double.toString((num1 /100)*num2 ));
                         }
 
                         break;
@@ -127,6 +132,12 @@ public class MainActivity extends AppCompatActivity {
                         result.setText("");
                         operation = "+";
                         break;
+                    case R.id.percent:
+                        num1= Double.parseDouble(result.getText().toString());
+                        result.setText("");
+                        operation = "%";
+
+
                     case R.id.clear:
                         result.append(clear.getText().toString());
                         result.setText("");
@@ -151,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
         zero.setOnClickListener(ocl);
         equal.setOnClickListener(ocl);
         plus.setOnClickListener(ocl);
+        percent.setOnClickListener(ocl);
         clear.setOnClickListener(ocl);
 
     }
